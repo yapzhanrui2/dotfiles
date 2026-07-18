@@ -1,0 +1,39 @@
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Opinionated Lua code formatter
+brew "stylua"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
+# Zsh plugin manager
+brew "zimfw"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Terminal-based AI coding assistant
+cask "claude-code@latest"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
+npm "prettier"
