@@ -1,13 +1,41 @@
-{ user, ... }:
+{ config, pkgs, user, ... }:
+
+let
+  dotfiles = "${config.home.homeDirectory}/.dotfiles";
+in
 
 {
   home.username = user;
   home.homeDirectory = "/Users/${user}";
-
   home.stateVersion = "26.05";
 
-  programs.home-manager.enable = true;
+  home.packages = with pkgs; [
+    bat
+    fd
+    gh
+    jq
+    lazygit
+    ripgrep
+    stylua
+    uv
+    zellij
+  ];
 
-  # Intentionally empty during migration.
-  home.packages = [ ];
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+
+    # Makes `cd` use zoxide, matching your existing configuration.
+    options = [ "--cmd cd" ];
+  };
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
 }

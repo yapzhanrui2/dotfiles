@@ -43,5 +43,28 @@
     # Required because Homebrew was already installed manually.
     autoMigrate = true;
   };
+  # nix-darwin manages selected Brew formulae and casks.
+  homebrew = { 
+    enable = true;
+    
+    onActivation = { 
+      # Never remove manually installed or undeclared Brew packages. 
+      cleanup = "none"; 
+      # Avoid network updates and surprise upgrades during darwin-rebuild. 
+      autoUpdate = false; 
+      upgrade = false; 
+    }; 
 
+    brews = [ 
+      # Custom/Brew-only CLI tools. 
+      "herdr" 
+    ]; 
+
+    casks = [ 
+      "ghostty" 
+      "tailscale-app"
+      "claude-code@latest"
+      "codex"
+      ];
+    };
 }
