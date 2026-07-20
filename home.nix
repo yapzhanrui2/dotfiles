@@ -21,6 +21,34 @@ in
     zellij
   ];
 
+  programs.zsh = {
+    enable = true;
+
+    shellAliases = {
+      go-server = "ssh ray@ray-homelab-ubuntu";
+      zj = "zellij";
+    };
+
+    initContent = ''
+      # Zim framework
+      ZIM_HOME="''${ZDOTDIR:-$HOME}/.zim"
+
+      if [[ ! "$ZIM_HOME/init.zsh" -nt "''${ZIM_CONFIG_FILE:-''${ZDOTDIR:-$HOME}/.zimrc}" ]]; then
+        source /opt/homebrew/opt/zimfw/share/zimfw.zsh init
+      fi
+
+      source "$ZIM_HOME/init.zsh"
+
+      # Ghostty shell integration
+      if [[ -n "$GHOSTTY_RESOURCES_DIR" ]] &&
+         [[ -r "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration" ]]; then
+        source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration"
+      fi
+
+      unsetopt extended_glob
+    '';
+  };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -29,9 +57,6 @@ in
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-
-    # Makes `cd` use zoxide, matching your existing configuration.
-    options = [ "--cmd cd" ];
   };
 
   home.sessionVariables = {
