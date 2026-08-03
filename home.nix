@@ -31,7 +31,10 @@ in
    };
 
    initContent = ''
-      ZIM_HOME="''${ZDOTDIR:-$HOME}/.zim"
+     export BUN_INSTALL="$HOME/.bun"
+     export PATH="$BUN_INSTALL/bin:$PATH"
+
+     ZIM_HOME="''${ZDOTDIR:-$HOME}/.zim"
 
      if [[ ! "$ZIM_HOME/init.zsh" -nt "''${ZIM_CONFIG_FILE:-''${ZDOTDIR:-$HOME}/.zimrc}" ]]; then
         source /opt/homebrew/opt/zimfw/share/zimfw.zsh init
@@ -61,5 +64,8 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
+
   };
+
+
 }
