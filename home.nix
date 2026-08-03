@@ -33,6 +33,7 @@ in
    initContent = ''
      export BUN_INSTALL="$HOME/.bun"
      export PATH="$BUN_INSTALL/bin:$PATH"
+     export PATH="$HOME/.local/bin:$PATH"
 
      ZIM_HOME="''${ZDOTDIR:-$HOME}/.zim"
 
